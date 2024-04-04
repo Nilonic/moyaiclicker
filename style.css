@@ -1,0 +1,31 @@
+body{
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+div#cookiez{
+    text-align: center;
+    position: absolute;
+    bottom: 0%;
+    padding-bottom: 4px;
+    padding-left: 4px;
+    font-size: larger;
+    visibility: hidden;
+}
+
+body#dark{
+    background-color: #222;
+    color: white;
+}
+
+#🗿🗿{
+    position: absolute; /* or absolute */
+    top: 50%;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+}
+
+#🗿🗿🗿 {
+    font-size: 36px;
+}
