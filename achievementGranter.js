@@ -1,5 +1,6 @@
 function grantAchievement(ach_name = "oops!"){
     switch (ach_name.toLowerCase()){
+        //misc
         case "acceptcookies":
             console.log("granting achievement 'acceptcookies'")
             showAchievementPopup("Accepted the cookies")
@@ -10,11 +11,40 @@ function grantAchievement(ach_name = "oops!"){
             showAchievementPopup("Enable Dark mode")
             localStorageAPI.write("ACH_DARK", 1);
             break
+        case "open devtools":
+                console.log("granting achievement 'open devtools'")
+                showAchievementPopup("Open devtools")
+                localStorageAPI.write("ACH_DT", 1);
+                break
+        //milestones
         case "milestone 1":
             console.log("granting achievement 'milestone 1'")
             showAchievementPopup("Baby Steps")
             localStorageAPI.write("ACH_MS1", 1);
             break
+        case "milestone 2":
+            console.log("granting achievement 'milestone 2'")
+            showAchievementPopup("Stone Sculptor")
+            localStorageAPI.write("ACH_MS2", 1);
+            break
+        case "milestone 3":
+            console.log("granting achievement 'milestone 3'")
+            showAchievementPopup("Monument Builder")
+            localStorageAPI.write("ACH_MS3", 1);
+            break
+        case "milestone 4":
+            console.log("granting achievement 'milestone 4'")
+            showAchievementPopup("Ancient Artisan")
+            localStorageAPI.write("ACH_MS4", 1);
+            break
+        case "milestone 5":
+            console.log("granting achievement 'milestone 5'")
+            showAchievementPopup("Rock Enthusiast")
+            localStorageAPI.write("ACH_MS5", 1);
+            break
+        
+        
+        //super secret Achievements
         default:
             alert("oops!")
             showAchievementPopup("Encounter an error")

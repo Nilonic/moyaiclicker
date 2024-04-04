@@ -3,6 +3,28 @@ let disabled = false;
 let volume = 1;
 let audio; // Define audio in the outer scope
 
+document.addEventListener("keydown", function(event) {
+    if (event.ctrlKey && event.shiftKey && event.key === "I") {
+        if (localStorageAPI.read("ACH_DT") == null){
+            grantAchievement("open devtools")
+        }
+        // Ctrl+Shift+I pressed
+        //alert("Ctrl+Shift+I pressed");
+    } else if (event.key === "F12") {
+        if (localStorageAPI.read("ACH_DT") == null){
+            grantAchievement("open devtools")
+        }
+        // F12 pressed
+        //alert("F12 pressed");
+    } else if (event.ctrlKey && event.shiftKey && event.key === "J") {
+        if (localStorageAPI.read("ACH_DT") == null){
+            grantAchievement("open devtools")
+        }
+        // Ctrl+Shift+J pressed
+        //alert("Ctrl+Shift+J pressed");
+    }
+});
+
 function clickDaMoyai() {
     if (!disabled) {
         //console.log("playing sfx");
@@ -18,6 +40,18 @@ function clickDaMoyai() {
         document.getElementById("🗿🗿🗿").innerText = timesMoyaid;
         if (timesMoyaid == 10 && localStorageAPI.read("ACH_MS1") == null){
             grantAchievement("Milestone 1")
+        }
+        if (timesMoyaid == 50 && localStorageAPI.read("ACH_MS2") == null){
+            grantAchievement("Milestone 2")
+        }
+        if (timesMoyaid == 100 && localStorageAPI.read("ACH_MS3") == null){
+            grantAchievement("Milestone 3")
+        }
+        if (timesMoyaid == 250 && localStorageAPI.read("ACH_MS4") == null){
+            grantAchievement("Milestone 4")
+        }
+        if (timesMoyaid == 500 && localStorageAPI.read("ACH_MS5") == null){
+            grantAchievement("Milestone 5")
         }
     } else {
         console.log("v");
