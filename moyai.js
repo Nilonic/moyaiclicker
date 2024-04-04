@@ -41,7 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
     resetButton.addEventListener("click", () => {
         resetting = true;
         setTimeout(() => {
-            timesMoyaid = -1;
+            //timesMoyaid = -1;
+            timesMoyaid = 0; //stupid fuckin legacy code
             counterElement.innerText = timesMoyaid;
             resetting = false;
         }, 25);
