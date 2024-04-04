@@ -39,6 +39,7 @@ addEventListener("DOMContentLoaded", () => {
         document.getElementById("cookiez").style.visibility = "visible"
         document.getElementById("cookiez_button").addEventListener("click", () => {
             createCookie("cookiesClickOK", true);
+            grantAchievement("acceptCookies");
             document.getElementById("cookiez").style.visibility = "hidden"
         })
     }

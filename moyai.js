@@ -1,11 +1,11 @@
 let timesMoyaid = 0;
-let resetting = false;
+let disabled = false;
 let volume = 1;
 let audio; // Define audio in the outer scope
 
-function playSoundEffect() {
-    if (!resetting) {
-        console.log("playing sfx");
+function clickDaMoyai() {
+    if (!disabled) {
+        //console.log("playing sfx");
         let x = audio.cloneNode();
         try {
             x.volume = volume;
@@ -16,6 +16,9 @@ function playSoundEffect() {
         x.play();
         timesMoyaid += 1;
         document.getElementById("🗿🗿🗿").innerText = timesMoyaid;
+        if (timesMoyaid == 10 && localStorageAPI.read("ACH_MS1") == null){
+            grantAchievement("Milestone 1")
+        }
     } else {
         console.log("v");
     }
@@ -35,16 +38,16 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error when loading audio: " + event.target.error.message);
     };
 
-    document.addEventListener('keypress', playSoundEffect);
-    document.addEventListener("click", playSoundEffect);
+    document.addEventListener('keypress', clickDaMoyai);
+    document.addEventListener("click", clickDaMoyai);
 
     resetButton.addEventListener("click", () => {
-        resetting = true;
+        //disabled = true;
         setTimeout(() => {
             //timesMoyaid = -1;
             timesMoyaid = 0; //stupid fuckin legacy code
             counterElement.innerText = timesMoyaid;
-            resetting = false;
+            //disabled = false;
         }, 25);
     });
 
@@ -53,3 +56,4 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(volume);
     });
 });
+
