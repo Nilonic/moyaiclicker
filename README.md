@@ -22,6 +22,7 @@ Play the latest version on [GitHub](https://nilonic.github.io/moyaiclicker/) (up
 ### Miscellaneous Achievements
 - **Accept Cookies**: Click to accept cookies.
 - **Dark Mode First**: Enable dark mode for the first time.
+- **Return To The Light**: go back to the light mode
 - **Open DevTools**: Access DevTools using F12, Ctrl+Shift+J, or Ctrl+Shift+I.
 - *Discover a secret achievement by causing an error.*
 

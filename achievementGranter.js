@@ -46,8 +46,13 @@ function grantAchievement(ach_name = "oops!") {
             break
         case "darkmodefirst":
             console.log("granting achievement 'darkmodefirst'")
-            x("Enable Dark mode")
+            x("Embrace the Dark Side")
             localStorageAPI.write("ACH_DARK", 1);
+            break
+        case "lightmodereturn":
+            console.log("granting achievement 'lightmodereturn'")
+            x("Return to the light")
+            localStorageAPI.write("ACH_LIGHT", 1);
             break
         case "open devtools":
             console.log("granting achievement 'open devtools'")
