@@ -1,4 +1,3 @@
-let timesMoyaid = 0;
 let disabled = false;
 let volume = 1;
 let audio; // Define audio in the outer scope
@@ -36,41 +35,9 @@ document.addEventListener("keydown", function(event) {
     }
 });
 
-function clickDaMoyai() {
-    if (!disabled) {
-        //console.log("playing sfx");
-        let x = audio.cloneNode();
-        try {
-            x.volume = volume;
-        } catch (error) {
-            console.error(`failed to set volume to value ${volume}. setting to 1`)
-            volume = 1;
-            x.volume = 1;
-        }
-        x.play();
-        timesMoyaid += 1;
-        document.getElementById("🗿🗿🗿").innerText = timesMoyaid;
-        if (timesMoyaid == 10 && localStorageAPI.read("ACH_MS1") == null){
-            grantAchievement("Milestone 1")
-        }
-        if (timesMoyaid == 50 && localStorageAPI.read("ACH_MS2") == null){
-            grantAchievement("Milestone 2")
-        }
-        if (timesMoyaid == 100 && localStorageAPI.read("ACH_MS3") == null){
-            grantAchievement("Milestone 3")
-        }
-        if (timesMoyaid == 250 && localStorageAPI.read("ACH_MS4") == null){
-            grantAchievement("Milestone 4")
-        }
-        if (timesMoyaid == 500 && localStorageAPI.read("ACH_MS5") == null){
-            grantAchievement("Milestone 5")
-        }
-    } else {
-        console.log("v");
-    }
-}
 
 document.addEventListener("DOMContentLoaded", function () {
+    let timesMoyaid = 0;
     const volumeSlider = document.getElementById("volume-slider");
     const resetButton = document.getElementById("reset");
     const counterElement = document.getElementById("🗿🗿🗿");
@@ -83,6 +50,40 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Error when loading audio: " + event.target.error.message);
         console.error("Error when loading audio: " + event.target.error.message);
     };
+
+    function clickDaMoyai() {
+        if (!disabled) {
+            //console.log("playing sfx");
+            let x = audio.cloneNode();
+            try {
+                x.volume = volume;
+            } catch (error) {
+                console.error(`failed to set volume to value ${volume}. setting to 1`)
+                volume = 1;
+                x.volume = 1;
+            }
+            x.play();
+            timesMoyaid += 1;
+            document.getElementById("🗿🗿🗿").innerText = timesMoyaid;
+            if (timesMoyaid == 10 && localStorageAPI.read("ACH_MS1") == null){
+                grantAchievement("Milestone 1")
+            }
+            if (timesMoyaid == 50 && localStorageAPI.read("ACH_MS2") == null){
+                grantAchievement("Milestone 2")
+            }
+            if (timesMoyaid == 100 && localStorageAPI.read("ACH_MS3") == null){
+                grantAchievement("Milestone 3")
+            }
+            if (timesMoyaid == 250 && localStorageAPI.read("ACH_MS4") == null){
+                grantAchievement("Milestone 4")
+            }
+            if (timesMoyaid == 500 && localStorageAPI.read("ACH_MS5") == null){
+                grantAchievement("Milestone 5")
+            }
+        } else {
+            console.log("v");
+        }
+    }
 
     document.addEventListener('keypress', clickDaMoyai);
     document.addEventListener("click", clickDaMoyai);
