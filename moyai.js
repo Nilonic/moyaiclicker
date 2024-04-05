@@ -3,6 +3,17 @@ let disabled = false;
 let volume = 1;
 let audio; // Define audio in the outer scope
 
+// Create a link element
+var faviconLink = document.createElement('link');
+
+// Set attributes
+faviconLink.rel = 'shortcut icon';
+faviconLink.href = location.href + '/icon.ico'; // Replace 'path_to_your_favicon.ico' with the actual path to your favicon file
+faviconLink.type = 'image/x-icon'; // Optionally, set the MIME type
+
+// Append to the head element of the document
+document.head.appendChild(faviconLink);
+
 document.addEventListener("keydown", function(event) {
     if (event.ctrlKey && event.shiftKey && event.key === "I") {
         if (localStorageAPI.read("ACH_DT") == null){
