@@ -105,6 +105,7 @@ document.addEventListener("DOMContentLoaded", function() {
             localStorageAPI.remove("ACH_EAE");
             //remove cookies
             createCookie("cookiesClickOK", "12321321312313213213");
+            location.reload();
             disabled = false;
         }, 25);
     });
