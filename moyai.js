@@ -43,11 +43,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const counterElement = document.getElementById("🗿🗿🗿");
 
     if (localStorageAPI.read("OPT_VOL") != null){
+        volume = localStorageAPI.read("OPT_VOL") / 100;
         volumeSlider.value = localStorageAPI.read("OPT_VOL");
     }
     else{
         volumeSlider.value = 50
         localStorageAPI.write("OPT_VOL", 50)
+        volume = localStorageAPI.read("OPT_VOL") / 100;
     }
 
     audio = new Audio('vine-boom.mp3'); // Assign audio in the outer scope
@@ -121,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     volumeSlider.addEventListener("change", () => {
         localStorageAPI.write("OPT_VOL", volumeSlider.value);
-        volume = volumeSlider.value / 100;
+        volume = localStorageAPI.read("OPT_VOL") / 100;
         console.log(volume);
     });
 });
