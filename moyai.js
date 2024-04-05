@@ -32,6 +32,7 @@ function clickDaMoyai() {
         try {
             x.volume = volume;
         } catch (error) {
+            console.error(`failed to set volume to value ${volume}. setting to 1`)
             volume = 1;
             x.volume = 1;
         }

@@ -46,7 +46,7 @@ function grantAchievement(ach_name = "oops!"){
         
         //super secret Achievements
         default:
-            alert("oops!")
+            //alert("oops!")
             showAchievementPopup("Encounter an error")
             localStorageAPI.write("ACH_EAE", 1);
             break
