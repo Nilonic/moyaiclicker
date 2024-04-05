@@ -24,7 +24,7 @@ Play the latest version on [GitHub](https://nilonic.github.io/moyaiclicker/) (up
 - **Dark Mode First**: Enable dark mode for the first time.
 - **Return To The Light**: go back to the light mode
 - **Open DevTools**: Access DevTools using F12, Ctrl+Shift+J, or Ctrl+Shift+I.
-- *Discover a secret achievement by causing an error.*
+- *Discover a secret achievement by causing an error.* <!--literally just invoke "console.error" with any argument-->
 
 ## Planned Features
 - **Achievement Viewer**: View a list of achievements you've unlocked.
