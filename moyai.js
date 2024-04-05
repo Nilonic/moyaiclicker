@@ -42,7 +42,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const srcButton = document.getElementById("src");
     const counterElement = document.getElementById("🗿🗿🗿");
 
-    volumeSlider.value = 100;
+    if (localStorageAPI.read("OPT_VOL") != null){
+        volumeSlider.value = localStorageAPI.read("OPT_VOL");
+    }
+    else{
+        volumeSlider.value = 50
+        localStorageAPI.write("OPT_VOL", 50)
+    }
 
     audio = new Audio('vine-boom.mp3'); // Assign audio in the outer scope
     audio.preload = "auto";
@@ -98,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
             counterElement.innerText = timesMoyaid;
             //wipe all achievements
             localStorageAPI.remove("ACH_COOK_ACC"); 
-            localStorageAPI.remove("ACH_DARK");
+            //localStorageAPI.remove("ACH_DARK"); //don't clear this one, otherwise those using the dark theme will never get it
             localStorageAPI.remove("ACH_DT");
             localStorageAPI.remove("ACH_MS1");
             localStorageAPI.remove("ACH_MS2");
@@ -114,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     volumeSlider.addEventListener("change", () => {
+        localStorageAPI.write("OPT_VOL", volumeSlider.value);
         volume = volumeSlider.value / 100;
         console.log(volume);
     });
