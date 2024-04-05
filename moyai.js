@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let timesMoyaid = 0;
     const volumeSlider = document.getElementById("volume-slider");
     const resetButton = document.getElementById("reset");
+    const srcButton = document.getElementById("src");
     const counterElement = document.getElementById("🗿🗿🗿");
 
     volumeSlider.value = 100;
@@ -86,7 +87,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.addEventListener('keypress', clickDaMoyai);
     document.addEventListener("click", clickDaMoyai);
-
+    srcButton.addEventListener("click", () => {
+        location.href = "https://github.com/Nilonic/moyaiclicker/"
+    })
     resetButton.addEventListener("click", () => {
         disabled = true;
         setTimeout(() => {
