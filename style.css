@@ -18,7 +18,8 @@ div#cookiez{
 footer#verString{
     text-align: left;
     position: fixed;
-    bottom: 4px;
+    top: 4px;
+    right: 4px;
 }
 
 body#dark{
