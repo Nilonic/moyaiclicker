@@ -13,17 +13,25 @@ addEventListener("DOMContentLoaded", () => {
             }
             rawFile.send(null);
         }
-    
-        // Usage example
     const verString = document.getElementById("verString");
 
-    //create da element
+    //initial scan
     const verStr = document.createElement("div");
+    var gitVer
     getFirstLineOfFile("curver.txt", (firstLine) => {
-        var gitVer = firstLine;
-        verStr.innerText = gitVer;
+        gitVer = firstLine;
+        verStr.innerText = `Moyai Clicker V${gitVer}`;
     });
     verString.appendChild(verStr);
+
+    setInterval(() => {
+        getFirstLineOfFile("curver.txt", (firstLine) => {
+            var gitVer2 = firstLine;
+            if (gitVer2 != gitVer){
+                verStr.innerText = `Moyai Clicker V${gitVer} (UPDATE. new ver: ${gitVer2})`
+            }
+        });
+    }, 2500);
 })
 
 
