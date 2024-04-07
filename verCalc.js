@@ -26,7 +26,6 @@ addEventListener("DOMContentLoaded", () => {
                 clearInterval(intervalId)
                 verStr.innerText = "Couldn't get version"
                 verString.style.color = "rgb(255, 127, 127)"
-                
                 verString.style.visibility = "visible";
             }, 500)
         }
@@ -62,10 +61,10 @@ addEventListener("DOMContentLoaded", () => {
                     clearInterval(intervalId);
                 }
                 else{
-                    console.log("ooh fuck yea");
+                    //console.log("ooh fuck yea");
                     for (let i = 0; i < loadedVerLen; i++) {
                         if (loadedVerSplit[i] < remVerSplit[i]) {
-                            console.log("yes")
+                            //console.log("yes")
                             const ah = document.createElement("a");
                             ah.innerText = "Here";
                             ah.href = location.href;
@@ -76,7 +75,7 @@ addEventListener("DOMContentLoaded", () => {
                             break; // Exit the loop after setting the innerText
                         }
                         else {
-                            console.log(`no`, loadedVerSplit[i], remVerSplit[i], loadedVerSplit[i] < remVerSplit[i])
+                            //console.log(`no`, loadedVerSplit[i], remVerSplit[i], loadedVerSplit[i] < remVerSplit[i])
                         }
                     }
                 }
