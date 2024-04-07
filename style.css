@@ -15,11 +15,19 @@ div#cookiez{
     visibility: hidden;
 }
 
-footer#verString{
+div#verString{
     text-align: left;
     position: fixed;
     top: 4px;
+    padding: 4px;
+    border-radius: 4px;
     right: 4px;
+    background-color: rgba(0, 0, 0, 0.2);
+    visibility: hidden;
+}
+
+body#dark div#verString{
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 body#dark{
@@ -49,6 +57,7 @@ button:disabled:hover{
     transform: scale(1);
     cursor: not-allowed;
 }
+
 
 #🗿🗿{
     position: absolute; /* or absolute */

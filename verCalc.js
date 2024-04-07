@@ -18,13 +18,27 @@ addEventListener("DOMContentLoaded", () => {
     //initial scan. we don't have to get remote content as, well, the current content should be up-to-date
     const verStr = document.createElement("div");
     var gitVer;
+    let intervalId;
     getFirstLineOfLocalFile("curver.txt", (firstLine) => {
+        if (firstLine == ""){
+            setTimeout(() => {
+                console.log(`stopping interval id=${intervalId}`);
+                clearInterval(intervalId)
+                verStr.innerText = "Couldn't get version"
+                verString.style.color = "rgb(255, 127, 127)"
+                
+                verString.style.visibility = "visible";
+            }, 500)
+        }
+        else{
         gitVer = firstLine;
         verStr.innerText = `Moyai Clicker V${gitVer}`;
+        verString.style.visibility = "visible";
+        }
     });
     verString.appendChild(verStr);
 
-    const intervalId = setInterval(() => {
+    intervalId = setInterval(() => {
         const url = 'https://raw.githubusercontent.com/Nilonic/moyaiclicker/main/curver.txt';
         const timestamp = new Date().getTime(); // Get current timestamp
 
@@ -51,7 +65,13 @@ addEventListener("DOMContentLoaded", () => {
                     console.log("ooh fuck yea");
                     for (let i = 0; i < loadedVerLen; i++) {
                         if (loadedVerSplit[i] < remVerSplit[i]) {
-                            verStr.innerText = `Moyai Clicker V${gitVer} (UPDATE AVAILABLE)`;
+                            console.log("yes")
+                            const ah = document.createElement("a");
+                            ah.innerText = "Here";
+                            ah.href = location.href;
+                            verStr.innerText = `Moyai Clicker V${gitVer} (UPDATE AVAILABLE. Click `;
+                            verStr.appendChild(ah);
+                            verStr.innerHTML += " to reload)"; // Using innerHTML to append HTML tags
                             clearInterval(intervalId); //exit the interval
                             break; // Exit the loop after setting the innerText
                         }
