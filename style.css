@@ -41,6 +41,14 @@ button{
 button:hover{
     transform: scale(1.1);
 }
+button:disabled{
+    background-color: #999292;
+    color: #ddd;
+}
+button:disabled:hover{
+    transform: scale(1);
+    cursor: not-allowed;
+}
 
 #🗿🗿{
     position: absolute; /* or absolute */

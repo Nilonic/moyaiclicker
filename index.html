@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!--meta stuff here-->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; font-src https://fonts.gstatic.com https://fonts.googleapis.com; style-src 'self' https://fonts.googleapis.com; connect-src 'self' https://raw.githubusercontent.com/Nilonic/moyaiclicker/main/curver.txt">
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Moyai Clicker</title>
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!--scripts go here-->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; font-src https://fonts.gstatic.com https://fonts.googleapis.com; style-src 'self' https://fonts.googleapis.com">
     <script src="moyai.js"></script>
     <script src="darkmode.js"></script>
     <script src="cookies.js"></script>
     <script src="localStorageAPI.js"></script>
     <script src="achievementGranter.js"></script>
     <script src="errorOverride.js"></script>
+    <script src="notificationManager.js"></script>
     <!--styles go here-->
     <link rel="stylesheet" href="style.css">
+    <!--anything else here-->
+    <title>Moyai Clicker</title>
 </head>
 <body cz-shortcut-listen="false"> <!--cz-shortcut-listen="false" disables colorzilla shortcut listening-->
     <header> <!--just to make things semi-readable-->
         <button id="reset">reset</button>
         <button id="dark">dark mode</button>
-        <button id="ach_pg">Achievements</button>
+        <button disabled aria-disabled="true" id="ach_pg">Achievements</button>
         <button id="src">View Source</button>
         <input type="range" id="volume-slider">
     </header>

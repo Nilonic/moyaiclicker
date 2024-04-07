@@ -26,6 +26,14 @@ document.addEventListener("keydown", function(event) {
 
 
 document.addEventListener("DOMContentLoaded", function() {
+    let timesMoyaid = 0;
+    if (localStorageAPI.read("SAV_MOYAI") != null){
+        timesMoyaid = localStorageAPI.read("SAV_MOYAI");
+        document.getElementById("🗿🗿🗿").innerText = timesMoyaid; //update the thing
+    }
+    else{
+        timesMoyaid = 0;
+    }
     // Create a link element
     var faviconLink = document.createElement('link');
 
@@ -36,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Append to the head element of the document
     document.head.appendChild(faviconLink);
-    let timesMoyaid = 0;
+    
     const volumeSlider = document.getElementById("volume-slider");
     const resetButton = document.getElementById("reset");
     const srcButton = document.getElementById("src");
@@ -70,8 +78,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 volume = 1;
                 x.volume = 1;
             }
+            try{
             x.play();
+            }
+            catch{
+                createNotification("Interact with the page first (AKA click)")
+            }
             timesMoyaid += 1;
+            localStorageAPI.write("SAV_MOYAI", timesMoyaid);
             document.getElementById("🗿🗿🗿").innerText = timesMoyaid;
             if (timesMoyaid >= 10 && localStorageAPI.read("ACH_MS1") == null) {
                 grantAchievement("Milestone 1")
@@ -93,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    document.addEventListener('keypress', clickDaMoyai);
+    document.addEventListener('keyup', clickDaMoyai); // fix for holding down a key
     document.addEventListener("click", clickDaMoyai);
     srcButton.addEventListener("click", () => {
         location.href = "https://github.com/Nilonic/moyaiclicker/"
@@ -104,9 +118,8 @@ document.addEventListener("DOMContentLoaded", function() {
             //timesMoyaid = -1;
             timesMoyaid = 0; //stupid fuckin legacy code
             counterElement.innerText = timesMoyaid;
-            //wipe all achievements
+            // wipe all achievements
             localStorageAPI.remove("ACH_COOK_ACC"); 
-            //localStorageAPI.remove("ACH_DARK"); //don't clear this one, otherwise those using the dark theme will never get it
             localStorageAPI.remove("ACH_DT");
             localStorageAPI.remove("ACH_MS1");
             localStorageAPI.remove("ACH_MS2");
@@ -114,9 +127,13 @@ document.addEventListener("DOMContentLoaded", function() {
             localStorageAPI.remove("ACH_MS4");
             localStorageAPI.remove("ACH_MS5");
             localStorageAPI.remove("ACH_EAE");
-            //remove cookies
+            // delete the save
+            localStorageAPI.remove("SAV_MOYAI");
+            // remove cookies
             createCookie("cookiesClickOK", "12321321312313213213");
+            // reload the page
             location.reload();
+            // as i didn't explain this. in case where location.reload doesn't work, just un-disable the shit
             disabled = false;
         }, 25);
     });
