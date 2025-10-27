@@ -35,7 +35,6 @@ function readCookie(name) {
 
 addEventListener("DOMContentLoaded", () => {
     if (readCookie("cookiesClickOK") != "true") {
-        //alert(typeof(readCookie("cookiesClickOK")))
         document.getElementById("cookiez").style.visibility = "visible"
         document.getElementById("cookiez_button").addEventListener("click", () => {
             createCookie("cookiesClickOK", true);
