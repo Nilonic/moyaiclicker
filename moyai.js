@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const resetButton = document.getElementById("reset");
     const srcButton = document.getElementById("src");
     const counterElement = document.getElementById("🗿🗿🗿");
+    const tryV2Button = document.getElementById("tryv2");
 
     if (localStorageAPI.read("OPT_VOL") != null){
         volume = localStorageAPI.read("OPT_VOL") / 100;
@@ -111,6 +112,9 @@ document.addEventListener("DOMContentLoaded", function() {
     document.addEventListener("click", clickDaMoyai);
     srcButton.addEventListener("click", () => {
         location.href = "https://github.com/Nilonic/moyaiclicker/"
+    })
+    tryV2Button.addEventListener("click", () => {
+        this.location.href = this.location.href + "/v2"
     })
     resetButton.addEventListener("click", () => {
         disabled = true;
