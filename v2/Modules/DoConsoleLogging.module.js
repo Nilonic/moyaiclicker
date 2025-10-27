@@ -1,3 +1,6 @@
+import { GrantAchievement } from "./Achievements.module.js";
+import { Read } from "./LocalStorage.module.js";
+
 let DoConsoleLogging = () => {
   const copyOfError = console.error;
   const copyOfLog = console.log;
