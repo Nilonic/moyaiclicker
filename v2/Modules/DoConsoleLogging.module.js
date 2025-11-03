@@ -1,49 +1,28 @@
+// DoConsoleLogging.module.js
+// Part of Moyai Clicker V2 Source Code
+// Under the MIT License
+
 import { GrantAchievement } from "./Achievements.module.js";
-import { Read } from "./LocalStorage.module.js";
+import { Read } from "./Storage.module.js";
 
 let DoConsoleLogging = () => {
   const copyOfError = console.error;
   const copyOfLog = console.log;
   const copyOfWarn = console.warn;
   const copyOfTrace = console.trace;
-
   const doConsoleLogging = true;
 
   console.error = function (...data) {
-    if (Read("ACH_EAE") == null) {
-      GrantAchievement(); // Grants the achievement
-    }
-    if (doConsoleLogging) {
-      copyOfError.apply(console, data);
-    } else {
-      return "Sorry, logging is disabled.";
-    }
+    Read("ACH_EAE").then(val => {
+      if (val == null) GrantAchievement();
+    });
+    if (doConsoleLogging) copyOfError.apply(console, data);
   };
 
-  console.warn = function (...data) {
-    if (doConsoleLogging) {
-      copyOfWarn.apply(console, data);
-    } else {
-      return "Sorry, logging is disabled.";
-    }
-  };
-
-  console.log = function (...data) {
-    if (doConsoleLogging) {
-      copyOfLog.apply(console, data);
-    } else {
-      return "Sorry, logging is disabled.";
-    }
-  };
-
+  console.warn = (...data) => doConsoleLogging ? copyOfWarn.apply(console, data) : "Logging disabled.";
+  console.log  = (...data) => doConsoleLogging ? copyOfLog.apply(console, data)  : "Logging disabled.";
   console.info = console.log;
-
-  console.trace = function (...data) {
-    if (doConsoleLogging) {
-      copyOfTrace.apply(console, data);
-    } else {
-      return "Sorry, logging is disabled.";
-    }
-  };
+  console.trace = (...data) => doConsoleLogging ? copyOfTrace.apply(console, data) : "Logging disabled.";
 };
+
 DoConsoleLogging();

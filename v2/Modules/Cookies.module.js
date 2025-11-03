@@ -1,3 +1,7 @@
+// Cookies.module.js
+// Part of Moyai Clicker V2 Source Code
+// Under the MIT License
+
 import { GrantAchievement } from "./Achievements.module.js";
 
 export function CreateCookie(name, data, exp = Infinity) {

@@ -1,5 +1,9 @@
+// Achievements.module.js
+// Part of Moyai Clicker V2 Source Code
+// Under the MIT License
+
 import { CreateNotification } from "./Notifications.module.js";
-import { Write } from "./LocalStorage.module.js";
+import { Write } from "./Storage.module.js";
 
 export function GrantAchievement(ach_name = "oops!") {
   let x = (achievement_name) => {
@@ -9,16 +13,6 @@ export function GrantAchievement(ach_name = "oops!") {
     case "acceptcookies":
       x("Bake sale? Count me in!");
       Write("ACH_COOK_ACC", 1);
-      break;
-    case "darkmodefirst":
-      // logic here
-      x("Embrace the void");
-      Write("ACH_DARK", 1);
-      break;
-    case "lightmodereturn":
-      // logic here
-      x("Return to the light");
-      Write("ACH_LIGHT", 1);
       break;
     case "open devtools":
       // logic here

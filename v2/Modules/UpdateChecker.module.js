@@ -1,3 +1,7 @@
+// UpdateChecker.module.js
+// Part of Moyai Clicker V2 Source Code
+// Under the MIT License
+
 addEventListener("DOMContentLoaded", () => {
   // Function to fetch the first line of a file
   function getFirstLineOfLocalFile(filename, callback) {
