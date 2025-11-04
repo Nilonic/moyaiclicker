@@ -21,7 +21,7 @@ let DoConsoleLogging = () => {
 
   console.warn = (...data) => doConsoleLogging ? copyOfWarn.apply(console, data) : "Logging disabled.";
   console.log  = (...data) => doConsoleLogging ? copyOfLog.apply(console, data)  : "Logging disabled.";
-  console.info = console.log;
+  console.info = (...data) => doConsoleLogging ? copyOfLog.apply(console, data) : "Logging disabled.";
   console.trace = (...data) => doConsoleLogging ? copyOfTrace.apply(console, data) : "Logging disabled.";
 };
 

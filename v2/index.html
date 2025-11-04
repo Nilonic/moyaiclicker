@@ -6,28 +6,51 @@ Under the MIT License
 
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <!--meta stuff here-->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; font-src https://fonts.gstatic.com https://fonts.googleapis.com; style-src 'self' https://fonts.googleapis.com; connect-src 'self'">
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="Runner.js" type="module"></script> <!--as per the V2 rewrite. I decided to compile everything into a module ^.^-->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'none';
+        script-src 'self';
+        style-src 'self' https://fonts.googleapis.com;
+        font-src https://fonts.gstatic.com;
+        img-src 'self' data:;
+        connect-src 'self';
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+        frame-ancestors 'none';
+        upgrade-insecure-requests;
+        block-all-mixed-content;"
+    />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="Runner.js" type="module"></script>
+    <!--as per the V2 rewrite. I decided to compile everything into a module ^.^-->
     <!--anything else here-->
     <title>Moyai Clicker</title>
-</head>
-<body cz-shortcut-listen="false"> <!--cz-shortcut-listen="false" disables colorzilla shortcut listening-->
+  </head>
+  <body cz-shortcut-listen="false">
+    <!--cz-shortcut-listen="false" disables colorzilla shortcut listening-->
     <header>
-        <button id="reset">reset</button>
-        <button id="dark">dark mode</button>
-        <button disabled aria-disabled="true" id="ach_pg">Achievements</button>
-        <button id="src">View Source</button>
-        <input type="range" id="volume-slider">
-        <div id="verString">
-        </div>
+      <button id="reset">reset</button>
+      <button id="dark">dark mode</button>
+      <button disabled aria-disabled="true" id="ach_pg">Achievements</button>
+      <button id="src">View Source</button>
+      <input type="range" id="volume-slider" />
+      <div id="verString"></div>
     </header>
-    <div id="🗿🗿">times you've <img id="moyaiimg" src="./moyai.png" draggable="false">'d: <div id="🗿🗿🗿">0</div></div>
-    <div id="cookiez">Welcome to Moyai Clicker! In order to enhance your <img src="./moyai.png" id="moyaiimg" draggable="false"> experience, we use cookies. <button id="cookiez_button">OK</button></div>
-</body>
+    <div id="🗿🗿">
+      times you've <img id="moyaiimg" src="./moyai.png" draggable="false" />'d:
+      <div id="🗿🗿🗿">0</div>
+    </div>
+    <div id="cookiez">
+      Welcome to Moyai Clicker! In order to enhance your
+      <img src="./moyai.png" id="moyaiimg" draggable="false" /> experience, we
+      use cookies. <button id="cookiez_button">OK</button>
+    </div>
+  </body>
 </html>

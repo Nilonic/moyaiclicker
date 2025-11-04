@@ -5,6 +5,7 @@
 let DB;
 let DBReadyResolve;
 const DBReady = new Promise((resolve) => (DBReadyResolve = resolve));
+let DBLoaded = false;
 
 const request = window.indexedDB.open("GameDB", 1);
 
@@ -22,38 +23,71 @@ request.onupgradeneeded = (event) => {
 request.onsuccess = (event) => {
   DB = event.target.result;
   console.log("Database opened successfully");
+  DBLoaded = true;
   DBReadyResolve();
 };
 
-async function getStore(mode = "readonly") {
+const memoryCache = new Map();
+let dirty = false;
+
+async function loadAllToMemory() {
   await DBReady;
-  const transaction = DB.transaction(["gameData"], mode);
-  return transaction.objectStore("gameData");
+  const transaction = DB.transaction(["gameData"], "readonly");
+  const store = transaction.objectStore("gameData");
+  return new Promise((resolve, reject) => {
+    const req = store.getAll();
+    req.onerror = (e) => reject(e.target.error);
+    req.onsuccess = (e) => {
+      e.target.result.forEach((entry) => memoryCache.set(entry.Key, entry.Value));
+      resolve();
+    };
+  });
+}
+
+async function flushToDB() {
+  if (!dirty || !DB) return;
+  const transaction = DB.transaction(["gameData"], "readwrite");
+  const store = transaction.objectStore("gameData");
+  memoryCache.forEach((value, key) => {
+    store.put({ Key: key, Value: value });
+  });
+  return new Promise((resolve, reject) => {
+    transaction.oncomplete = () => {
+      dirty = false;
+      resolve();
+    };
+    transaction.onerror = (e) => reject(e.target.error);
+  });
+}
+
+export async function InitStorage() {
+  await loadAllToMemory();
+  window.addEventListener("beforeunload", flushToDB);
+  window.addEventListener("unload", flushToDB);
+}
+
+export async function isLoaded(){
+  return DBLoaded;
+}
+
+export function DEBUG_DB_STATUS(){
+  return [DBLoaded, dirty, memoryCache, FlushNow];
 }
 
 export async function Write(key, value) {
-  const store = await getStore("readwrite");
-  return new Promise((resolve, reject) => {
-    const req = store.put({ Key: key, Value: value });
-    req.onerror = (e) => reject(e.target.error);
-    req.onsuccess = () => resolve();
-  });
+  memoryCache.set(key, value);
+  dirty = true;
 }
 
 export async function Read(key) {
-  const store = await getStore("readonly");
-  return new Promise((resolve, reject) => {
-    const req = store.get(key);
-    req.onerror = (e) => reject(e.target.error);
-    req.onsuccess = (e) => resolve(e.target.result ? e.target.result.Value : null);
-  });
+  return memoryCache.get(key) ?? null;
 }
 
 export async function Delete(key) {
-  const store = await getStore("readwrite");
-  return new Promise((resolve, reject) => {
-    const req = store.delete(key);
-    req.onerror = (e) => reject(e.target.error);
-    req.onsuccess = () => resolve();
-  });
+  memoryCache.delete(key);
+  dirty = true;
+}
+
+export async function FlushNow() {
+  await flushToDB();
 }
