@@ -3,8 +3,7 @@ name: deploy to GHP
 on:
   schedule:
     - cron: "0 0 * * 1" # every Monday at midnight UTC
-
-  workflow_dispatch:  
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -24,6 +23,7 @@ jobs:
 
     steps:
       - name: Determine if this is an even week
+        if: github.event_name != 'workflow_dispatch'
         id: weekcheck
         run: |
           WEEK=$(date +%U)
@@ -35,21 +35,27 @@ jobs:
             echo "skipping deploy"
           fi
 
+      - name: Force run for manual dispatch
+        if: github.event_name == 'workflow_dispatch'
+        id: weekcheck_forced
+        run: |
+          echo "run=true" >> $GITHUB_OUTPUT
+
       - name: Checkout
-        if: steps.weekcheck.outputs.run == 'true'
+        if: steps.weekcheck.outputs.run == 'true' || steps.weekcheck_forced.outputs.run == 'true'
         uses: actions/checkout@v4
 
       - name: Setup Pages
-        if: steps.weekcheck.outputs.run == 'true'
+        if: steps.weekcheck.outputs.run == 'true' || steps.weekcheck_forced.outputs.run == 'true'
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
-        if: steps.weekcheck.outputs.run == 'true'
+        if: steps.weekcheck.outputs.run == 'true' || steps.weekcheck_forced.outputs.run == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: "."
 
       - name: Deploy to GitHub Pages
-        if: steps.weekcheck.outputs.run == 'true'
+        if: steps.weekcheck.outputs.run == 'true' || steps.weekcheck_forced.outputs.run == 'true'
         id: deployment
         uses: actions/deploy-pages@v4
