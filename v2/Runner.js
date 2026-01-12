@@ -2,7 +2,7 @@
 // Part of Moyai Clicker V2 Source Code
 // Under the MIT License
 
-import { CreateCookie } from "./Modules/Cookies.module.js";
+import { } from "./Modules/Cookies.module.js";
 import {} from "./Modules/VersionLabelUpdater.module.js";
 import {} from "./Modules/DoConsoleLogging.module.js";
 import {} from "./Modules/DarkMode.module.js";
@@ -12,7 +12,6 @@ import { CreateNotification } from "./Modules/Notifications.module.js";
 import {} from "./Modules/AchievementsPage.module.js";
 import { ACHIEVEMENTS } from "./Modules/AchievementList.module.js";
 
-// Game Logic here. Game Logic was fine, this is just a copy+paste really
 let disabled = false;
 let volume = 1;
 // Load the audio *once* and clone the buffer for playback
@@ -117,20 +116,13 @@ document.addEventListener("DOMContentLoaded", async function () {
       counterElement.innerText = timesMoyaid;
 
       // Wipe all achievements + save
-      const keys = [
-        "ACH_COOK_ACC",
-        "ACH_DT",
-        "ACH_MS1",
-        "ACH_MS2",
-        "ACH_MS3",
-        "ACH_MS4",
-        "ACH_MS5",
-        "ACH_EAE",
-        "SAV_MOYAI",
-      ];
+      let keys = [];
+
+      for (const ack of ACHIEVEMENTS){
+        keys.push(ack.key)
+      }
       for (const k of keys) await Write(k, 0);
 
-      CreateCookie("cookiesClickOK", "12321321312313213213");
       Write("SAV_MOYAI", -0);
       location.reload();
       disabled = false;

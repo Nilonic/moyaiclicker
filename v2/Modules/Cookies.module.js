@@ -3,39 +3,26 @@
 // Under the MIT License
 
 import { GrantAchievement } from "./Achievements.module.js";
+import { Read, Write, isLoaded } from "./Storage.module.js";
 
-export function CreateCookie(name, data, exp = Infinity) {
-  let string = encodeURIComponent(name) + "=" + encodeURIComponent(data);
-  if (exp !== Infinity) {
-    let expiration = new Date();
-    expiration.setTime(expiration.getDate() + exp * 24 * 60 * 60 * 1000);
-    string += `; expires=${expiration.toUTCString()}`;
+const COOKIE_ACH_KEY = "ACH_COOK_ACC";
+
+document.addEventListener("DOMContentLoaded", async function cookieCheck() {
+    while (!(await isLoaded())) {
+    await new Promise(r => setTimeout(r, 50));
   }
+  const accepted = await Read(COOKIE_ACH_KEY);
 
-  document.cookie = string;
+  // If achievement is NOT set to 1, show popup
+  if (accepted != 1) {
+    const cookieBox = document.getElementById("cookiez");
+    const cookieBtn = document.getElementById("cookiez_button");
 
-  return ReadCookie(name) === string;
-}
+    cookieBox.style.visibility = "visible";
 
-export function ReadCookie(name) {
-  let cookies = document.cookie.split(";");
-
-  for (let i = 0; i < cookies.length; i++) {
-    let cookie = cookies[i].trim();
-    if (cookie.startsWith(encodeURIComponent(name) + "=")) {
-      return decodeURIComponent(cookie.substring(name.length + 1));
-    }
-  }
-  return null;
-}
-
-document.addEventListener("DOMContentLoaded", function cookieCheck() {
-  if (ReadCookie("cookiesClickOK") != "true") {
-    document.getElementById("cookiez").style.visibility = "visible";
-    document.getElementById("cookiez_button").addEventListener("click", () => {
-      CreateCookie("cookiesClickOK", true);
-      GrantAchievement("acceptCookies");
-      document.getElementById("cookiez").style.visibility = "hidden";
+    cookieBtn.addEventListener("click", async () => {
+      GrantAchievement("acceptcookies");
+      cookieBox.style.visibility = "hidden";
     });
   }
 });
