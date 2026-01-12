@@ -1,0 +1,28 @@
+{
+  "name": "moyaiclicker",
+  "version": "2.0.0",
+  "description": "[![deploy to GHP](https://github.com/Nilonic/moyaiclicker/actions/workflows/static.yml/badge.svg)](https://github.com/Nilonic/moyaiclicker/actions/workflows/static.yml)\r [![CodeQL](https://github.com/Nilonic/moyaiclicker/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Nilonic/moyaiclicker/actions/workflows/github-code-scanning/codeql)",
+  "homepage": "https://github.com/Nilonic/moyaiclicker#readme",
+  "bugs": {
+    "url": "https://github.com/Nilonic/moyaiclicker/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nilonic/moyaiclicker.git"
+  },
+  "license": "ISC",
+  "author": "Nilonic",
+  "type": "commonjs",
+  "main": "Runner.js",
+  "scripts": {
+    "build": "webpack && cp index.html dist/index.html",
+    "dev": "webpack --mode development --watch"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "babel-loader": "^10.0.0",
+    "webpack": "^5.104.1",
+    "webpack-cli": "^6.0.1"
+  }
+}

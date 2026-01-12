@@ -50,7 +50,7 @@ document.addEventListener("keydown", function (event) {
     event.key === "F12"
   ) {
     Read("ACH_DT").then((val) => {
-      if (val == null) GrantAchievement("open devtools");
+      if (val == null) GrantAchievement("opendevtools");
     });
   }
 });
