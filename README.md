@@ -1,5 +1,12 @@
 # Moyai Clicker
 
+> [!IMPORTANT]  
+> Moyai clicker V1 is now deprecated, and is no longer developed. V2 is in the works, and is close to being ready.
+> 
+> If you are a regular user, you don't have to do anything.
+> 
+> If you are developing a mod for this, please transition to V2. <!--why are you developing a mod anyway-->
+
 Welcome to Moyai Clicker, where you can embark on a journey of clicking Moyai emojis! Similar to the popular game Cookie Clicker, but with a quirky twist featuring the iconic Moyai emoji. Not only can you click with your mouse, but you can also use your keyboard to interact.
 
 Play the latest version on [GitHub](https://nilonic.github.io/moyaiclicker/) (updated with every push, though it may occasionally be unstable).
