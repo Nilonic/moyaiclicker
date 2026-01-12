@@ -15,7 +15,7 @@
   "type": "commonjs",
   "main": "Runner.js",
   "scripts": {
-    "build": "webpack && cp index.html dist/index.html",
+    "build": "webpack && cp index.html dist/index.html && cp moyai.png dist/moyai.png && cp style.css dist/style.css && cp style_dark.css dist/style_dark.css && cp favicon.ico dist/favicon.ico",
     "dev": "webpack --mode development --watch"
   },
   "devDependencies": {
