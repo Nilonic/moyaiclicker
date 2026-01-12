@@ -6,15 +6,11 @@ import { CreateCookie } from "./Modules/Cookies.module.js";
 import {} from "./Modules/VersionLabelUpdater.module.js";
 import {} from "./Modules/DoConsoleLogging.module.js";
 import {} from "./Modules/DarkMode.module.js";
-import {
-  InitStorage,
-  Read,
-  Write,
-  Delete,
-  isLoaded,
-} from "./Modules/Storage.module.js";
+import { InitStorage, Read, Write } from "./Modules/Storage.module.js";
 import { GrantAchievement } from "./Modules/Achievements.module.js";
 import { CreateNotification } from "./Modules/Notifications.module.js";
+import {} from "./Modules/AchievementsPage.module.js";
+import { ACHIEVEMENTS } from "./Modules/AchievementList.module.js";
 
 // Game Logic here. Game Logic was fine, this is just a copy+paste really
 let disabled = false;
@@ -94,17 +90,16 @@ document.addEventListener("DOMContentLoaded", async function () {
     Write("SAV_MOYAI", timesMoyaid);
     counterElement.innerText = timesMoyaid;
 
-    // Check achievements
-    const milestones = [
-      [10, "ACH_MS1", "Milestone 1"],
-      [50, "ACH_MS2", "Milestone 2"],
-      [100, "ACH_MS3", "Milestone 3"],
-      [250, "ACH_MS4", "Milestone 4"],
-      [500, "ACH_MS5", "Milestone 5"],
-    ];
-    for (const [threshold, key, name] of milestones) {
-      if (timesMoyaid >= threshold && (await Read(key)) == null) {
-        GrantAchievement(name);
+    const state = { moyai: timesMoyaid };
+
+    for (const ach of ACHIEVEMENTS) {
+      if (!ach.condition) continue;
+
+      const unlocked = await Read(ach.key);
+      if (unlocked === 1) continue;
+
+      if (ach.condition(state)) {
+        GrantAchievement(ach.id);
       }
     }
   }
@@ -133,9 +128,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         "ACH_EAE",
         "SAV_MOYAI",
       ];
-      for (const k of keys) await Delete(k);
+      for (const k of keys) await Write(k, 0);
 
       CreateCookie("cookiesClickOK", "12321321312313213213");
+      Write("SAV_MOYAI", -0);
       location.reload();
       disabled = false;
     }, 25);

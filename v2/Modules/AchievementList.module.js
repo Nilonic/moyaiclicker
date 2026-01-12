@@ -1,0 +1,75 @@
+// AchievementList.module.js
+// Part of Moyai Clicker V2 Source Code
+// Under the MIT License
+
+export const ACHIEVEMENTS = [
+  {
+    id: "acceptcookies",
+    key: "ACH_COOK_ACC",
+    name: "Bake sale? Count me in!",
+    desc: "You accepted the cookies. A true believer in baked goods.",
+    hint: "Sometimes, it's better to just accept.",
+    notify: true
+  },
+  {
+    id: "opendevtools",
+    key: "ACH_DT",
+    name: "Master Hacker",
+    desc: "You opened the developer tools. Knowledge is power.",
+    hint: "Curiosity leads to powerful tools.",
+    notify: true
+  },
+  {
+    id: "milestone1",
+    key: "ACH_MS1",
+    name: "Pebble Painter",
+    desc: "You reached the first major milestone.",
+    hint: "Every journey starts with a single click.",
+    condition: (state) => state.moyai >= 10,
+    notify: true
+  },
+  {
+    id: "milestone2",
+    key: "ACH_MS2",
+    name: "Stone Sculptor",
+    desc: "Your progress is becoming solid.",
+    hint: "Keep shaping your legacy.",
+    condition: (state) => state.moyai >= 50,
+    notify: true
+  },
+  {
+    id: "milestone3",
+    key: "ACH_MS3",
+    name: "Monument Maker",
+    desc: "You've built something impressive.",
+    hint: "Great things take time.",
+    condition: (state) => state.moyai >= 100,
+    notify: true
+  },
+  {
+    id: "milestone4",
+    key: "ACH_MS4",
+    name: "Ancient Artisan",
+    desc: "Your craft has stood the test of time.",
+    hint: "Endurance is the mark of mastery.",
+    condition: (state) => state.moyai >= 250,
+    notify: true
+  },
+  {
+    id: "milestone5",
+    key: "ACH_MS5",
+    name: "???",
+    desc: "You reached a future milestone. Somehow.",
+    hint: "The future is not yet written.",
+    condition: (state) => state.moyai >= 500,
+    notify: true
+  },
+  {
+    id: "error",
+    key: "ACH_EAE",
+    name: "Encounter an error",
+    desc: "Something went wrong… but you made it an achievement.",
+    hint: "Mistakes happen.",
+    notify: false
+  }
+];

@@ -2,51 +2,23 @@
 // Part of Moyai Clicker V2 Source Code
 // Under the MIT License
 
+import { ACHIEVEMENTS } from "./AchievementList.module.js";
 import { CreateNotification } from "./Notifications.module.js";
-import { Write } from "./Storage.module.js";
+import { Write, Read } from "./Storage.module.js";
+import { update } from "./AchievementsPage.module.js";
 
-export function GrantAchievement(ach_name = "oops!") {
-  let x = (achievement_name) => {
-    CreateNotification(`You got the Achievement "${achievement_name}"`);
-  };
-  switch (ach_name.toLowerCase()) {
-    case "acceptcookies":
-      x("Bake sale? Count me in!");
-      Write("ACH_COOK_ACC", 1);
-      break;
-    case "open devtools":
-      // logic here
-      x("Master Hacker");
-      Write("ACH_DT", 1);
-      break;
-    case "milestone 1":
-      x("Pebble Painter");
-      Write("ACH_MS1", 1);
-      // logic here
-      break;
-    case "milestone 2":
-      x("Stone Sculptor");
-      Write("ACH_MS2", 1);
-      // logic here
-      break;
-    case "milestone 3":
-      x("Monument Maker");
-      Write("ACH_MS3", 1);
-      // logic here
-      break;
-    case "milestone 4":
-      x("Ancient Artisan");
-      Write("ACH_MS4", 1);
-      // logic here
-      break;
-    case "milestone 5":
-      x("TODO: add new Milestones");
-      Write("ACH_MS5", 1);
-      // logic here
-      break;
-    default:
-      x("Encounter an error");
-      Write("ACH_EAE", 1);
-      break;
+export async function GrantAchievement(id) {
+  const ach = ACHIEVEMENTS.find(a => a.id === id);
+  if (!ach) return;
+
+  const already = await Read(ach.key);
+  if (already === 1) return;
+
+  await Write(ach.key, 1);
+
+  if (ach.notify) {
+    CreateNotification(`You got the Achievement "${ach.name}"`);
   }
+
+  update();
 }

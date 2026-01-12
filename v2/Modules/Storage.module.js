@@ -84,7 +84,7 @@ export async function Read(key) {
 }
 
 export async function Delete(key) {
-  memoryCache.delete(key);
+  let res = memoryCache.delete(key);
   dirty = true;
 }
 
