@@ -2,7 +2,7 @@
 // Part of Moyai Clicker V2 Source Code
 // Under the MIT License
 
-import { } from "./Modules/Cookies.module.js";
+import {} from "./Modules/Cookies.module.js";
 import {} from "./Modules/VersionLabelUpdater.module.js";
 import {} from "./Modules/DoConsoleLogging.module.js";
 import {} from "./Modules/DarkMode.module.js";
@@ -50,7 +50,7 @@ document.addEventListener("keydown", function (event) {
     event.key === "F12"
   ) {
     Read("ACH_DT").then((val) => {
-      if (val == null) GrantAchievement("open devtools");
+      if (val == null) GrantAchievement("opendevtools");
     });
   }
 });
@@ -118,8 +118,8 @@ document.addEventListener("DOMContentLoaded", async function () {
       // Wipe all achievements + save
       let keys = [];
 
-      for (const ack of ACHIEVEMENTS){
-        keys.push(ack.key)
+      for (const ack of ACHIEVEMENTS) {
+        keys.push(ack.key);
       }
       for (const k of keys) await Write(k, 0);
 

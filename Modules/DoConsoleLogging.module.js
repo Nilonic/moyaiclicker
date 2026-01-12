@@ -13,16 +13,20 @@ let DoConsoleLogging = () => {
   const doConsoleLogging = true;
 
   console.error = function (...data) {
-    Read("ACH_EAE").then(val => {
-      if (val == null) GrantAchievement();
+    Read("ACH_EAE").then((val) => {
+      if (val == null) GrantAchievement("error");
     });
     if (doConsoleLogging) copyOfError.apply(console, data);
   };
 
-  console.warn = (...data) => doConsoleLogging ? copyOfWarn.apply(console, data) : "Logging disabled.";
-  console.log  = (...data) => doConsoleLogging ? copyOfTrace.apply(console, data)  : "Logging disabled.";
-  console.info = (...data) => doConsoleLogging ? copyOfLog.apply(console, data) : "Logging disabled.";
-  console.trace = (...data) => doConsoleLogging ? copyOfTrace.apply(console, data) : "Logging disabled.";
+  console.warn = (...data) =>
+    doConsoleLogging ? copyOfWarn.apply(console, data) : "Logging disabled.";
+  console.log = (...data) =>
+    doConsoleLogging ? copyOfTrace.apply(console, data) : "Logging disabled.";
+  console.info = (...data) =>
+    doConsoleLogging ? copyOfLog.apply(console, data) : "Logging disabled.";
+  console.trace = (...data) =>
+    doConsoleLogging ? copyOfTrace.apply(console, data) : "Logging disabled.";
 };
 
 DoConsoleLogging();

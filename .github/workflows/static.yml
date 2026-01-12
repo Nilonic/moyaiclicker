@@ -45,6 +45,21 @@ jobs:
         if: steps.weekcheck.outputs.run == 'true' || steps.weekcheck_forced.outputs.run == 'true'
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        if: steps.weekcheck.outputs.run == 'true' || steps.weekcheck_forced.outputs.run == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        if: steps.weekcheck.outputs.run == 'true' || steps.weekcheck_forced.outputs.run == 'true'
+        run: npm ci
+
+      - name: Build
+        if: steps.weekcheck.outputs.run == 'true' || steps.weekcheck_forced.outputs.run == 'true'
+        run: npm run build
+
       - name: Setup Pages
         if: steps.weekcheck.outputs.run == 'true' || steps.weekcheck_forced.outputs.run == 'true'
         uses: actions/configure-pages@v5
@@ -53,7 +68,7 @@ jobs:
         if: steps.weekcheck.outputs.run == 'true' || steps.weekcheck_forced.outputs.run == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "."
+          path: dist
 
       - name: Deploy to GitHub Pages
         if: steps.weekcheck.outputs.run == 'true' || steps.weekcheck_forced.outputs.run == 'true'

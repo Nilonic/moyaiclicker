@@ -4,12 +4,6 @@
 
 import { DEBUG_DB_STATUS } from "./Storage.module.js";
 
-function checkIp(ip) {
-  const ipv4 = /^(\d{1,3}\.){3}\d{1,3}$/;
-  const ipv6 = /^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/;
-  return ipv4.test(ip) || ipv6.test(ip);
-}
-
 addEventListener("DOMContentLoaded", () => {
   // Function to fetch the first line of a file
   function getFirstLineOfLocalFile(filename, callback) {
@@ -61,7 +55,7 @@ addEventListener("DOMContentLoaded", () => {
       verString.appendChild(dbSize);
       verString.appendChild(flushMemToDB);
       verString.appendChild(addClicks);
-      flushMemToDB.innerText = "Flush in-memory DB to Indexed DB"
+      flushMemToDB.innerText = "Flush in-memory DB to Indexed DB";
       addClicks.innerText = "add 10 clicks";
       addClicks.addEventListener("click", () => {
         const keyupEvent = new KeyboardEvent("keyup", {

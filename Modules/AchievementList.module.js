@@ -9,7 +9,7 @@ export const ACHIEVEMENTS = [
     name: "Bake sale? Count me in!",
     desc: "You accepted the cookies. A true believer in baked goods.",
     hint: "Sometimes, it's better to just accept.",
-    notify: true
+    notify: true,
   },
   {
     id: "opendevtools",
@@ -17,7 +17,7 @@ export const ACHIEVEMENTS = [
     name: "Master Hacker",
     desc: "You opened the developer tools. Knowledge is power.",
     hint: "Curiosity leads to powerful tools.",
-    notify: true
+    notify: true,
   },
   {
     id: "milestone1",
@@ -26,7 +26,7 @@ export const ACHIEVEMENTS = [
     desc: "You reached the first major milestone.",
     hint: "Every journey starts with a single click.",
     condition: (state) => state.moyai >= 10,
-    notify: true
+    notify: true,
   },
   {
     id: "milestone2",
@@ -35,7 +35,7 @@ export const ACHIEVEMENTS = [
     desc: "Your progress is becoming solid.",
     hint: "Keep shaping your legacy.",
     condition: (state) => state.moyai >= 50,
-    notify: true
+    notify: true,
   },
   {
     id: "milestone3",
@@ -44,7 +44,7 @@ export const ACHIEVEMENTS = [
     desc: "You've built something impressive.",
     hint: "Great things take time.",
     condition: (state) => state.moyai >= 100,
-    notify: true
+    notify: true,
   },
   {
     id: "milestone4",
@@ -53,7 +53,7 @@ export const ACHIEVEMENTS = [
     desc: "Your craft has stood the test of time.",
     hint: "Endurance is the mark of mastery.",
     condition: (state) => state.moyai >= 250,
-    notify: true
+    notify: true,
   },
   {
     id: "milestone5",
@@ -62,7 +62,7 @@ export const ACHIEVEMENTS = [
     desc: "You reached a future milestone. Somehow.",
     hint: "The future is not yet written.",
     condition: (state) => state.moyai >= 500,
-    notify: true
+    notify: true,
   },
   {
     id: "error",
@@ -70,6 +70,6 @@ export const ACHIEVEMENTS = [
     name: "Encounter an error",
     desc: "Something went wrong… but you made it an achievement.",
     hint: "Mistakes happen.",
-    notify: false
-  }
+    notify: false,
+  },
 ];
