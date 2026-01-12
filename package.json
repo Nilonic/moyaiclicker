@@ -15,13 +15,18 @@
   "type": "commonjs",
   "main": "Runner.js",
   "scripts": {
-    "build": "webpack && cp index.html dist/index.html && cp moyai.png dist/moyai.png && cp style.css dist/style.css && cp style_dark.css dist/style_dark.css && cp favicon.ico dist/favicon.ico",
-    "dev": "webpack --mode development --watch"
+    "build": "webpack && copyfiles -u 0 index.html moyai.png favicon.ico vine-boom.mp3 curver.txt dist",
+    "dev": "webpack --mode development && copyfiles -u 0 dev.html moyai.png favicon.ico vine-boom.mp3 curver.txt dist"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
     "babel-loader": "^10.0.0",
+    "copyfiles": "^2.4.1",
+    "css-loader": "^7.1.2",
+    "mini-css-extract-plugin": "^2.9.4",
+    "style-loader": "^4.0.0",
+    "terser-webpack-plugin": "^5.3.16",
     "webpack": "^5.104.1",
     "webpack-cli": "^6.0.1"
   }

@@ -1,12 +1,13 @@
 const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  mode: "production", // or "development"
+  mode: "production",
   entry: "./Runner.js",
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
-    clean: true, // clears old builds
+    clean: true,
   },
   module: {
     rules: [
@@ -14,10 +15,20 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         type: "javascript/auto",
-        use: {
-          loader: "babel-loader",
-        },
+        use: "babel-loader",
+      },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+        ],
       },
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "styles.css",
+    }),
+  ],
 };
