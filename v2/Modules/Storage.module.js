@@ -38,7 +38,9 @@ async function loadAllToMemory() {
     const req = store.getAll();
     req.onerror = (e) => reject(e.target.error);
     req.onsuccess = (e) => {
-      e.target.result.forEach((entry) => memoryCache.set(entry.Key, entry.Value));
+      e.target.result.forEach((entry) =>
+        memoryCache.set(entry.Key, entry.Value)
+      );
       resolve();
     };
   });
@@ -66,11 +68,11 @@ export async function InitStorage() {
   window.addEventListener("unload", flushToDB);
 }
 
-export async function isLoaded(){
+export async function isLoaded() {
   return DBLoaded;
 }
 
-export function DEBUG_DB_STATUS(){
+export function DEBUG_DB_STATUS() {
   return [DBLoaded, dirty, memoryCache, FlushNow];
 }
 

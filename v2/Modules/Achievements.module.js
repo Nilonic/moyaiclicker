@@ -8,11 +8,11 @@ import { Write, Read } from "./Storage.module.js";
 import { update } from "./AchievementsPage.module.js";
 
 export async function GrantAchievement(id) {
-  const ach = ACHIEVEMENTS.find(a => a.id === id);
+  const ach = ACHIEVEMENTS.find((a) => a.id === id);
   if (!ach) return;
-  console.log(ach)
+  console.log(ach);
   const already = await Read(ach.key);
-  console.log(already)
+  console.log(already);
   if (already === 1) return;
 
   await Write(ach.key, 1);

@@ -12,7 +12,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (dm === 1) {
     but.innerText = "light mode";
     document.body.id = "dark";
-  } else if (dm == null && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  } else if (
+    dm == null &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
     but.innerText = "light mode";
     document.body.id = "dark";
     await Write("OPT_DM", 1);

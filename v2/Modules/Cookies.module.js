@@ -8,8 +8,8 @@ import { Read, Write, isLoaded } from "./Storage.module.js";
 const COOKIE_ACH_KEY = "ACH_COOK_ACC";
 
 document.addEventListener("DOMContentLoaded", async function cookieCheck() {
-    while (!(await isLoaded())) {
-    await new Promise(r => setTimeout(r, 50));
+  while (!(await isLoaded())) {
+    await new Promise((r) => setTimeout(r, 50));
   }
   const accepted = await Read(COOKIE_ACH_KEY);
 

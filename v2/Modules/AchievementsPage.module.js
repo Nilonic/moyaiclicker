@@ -37,7 +37,7 @@ export async function update() {
 
 document.addEventListener("DOMContentLoaded", async () => {
   while (!(await isLoaded())) {
-    await new Promise(r => setTimeout(r, 50));
+    await new Promise((r) => setTimeout(r, 50));
   }
   renderAchievements();
 });

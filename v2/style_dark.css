@@ -1,0 +1,40 @@
+/*
+style_dark.css
+Part of Moyai Clicker V2 Source Code
+Under the MIT License
+*/
+
+body#dark div#popup {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  color: #ccc;
+  background-color: #333;
+}
+body#dark {
+  background-color: #222;
+  color: white;
+}
+body#dark div#verString {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+body#dark #ach_pg_popover {
+  background-color: #2b2b2b;
+  color: #eee;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.6);
+}
+body#dark #ach_pg_topscroll {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+body#dark #ach_pg_ach {
+  background-color: #3d3d3d;
+  color: #eee;
+}
+body#dark #ach_pg_ach:hover {
+  background-color: #4a4a4a;
+}
+body#dark #ach_pg_locked {
+  background-color: #2a2a2a;
+  color: #777;
+}
+body#dark #ach_pg_desc {
+  background-color: rgba(255, 255, 255, 0.08);
+}
