@@ -19,7 +19,7 @@
     "dev": "webpack --mode development && copyfiles -u 0 dev.html moyai.png favicon.ico vine-boom.mp3 curver.txt dist"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.5",
+    "@babel/core": "^7.28.6",
     "@babel/preset-env": "^7.28.5",
     "babel-loader": "^10.0.0",
     "copyfiles": "^2.4.1",
