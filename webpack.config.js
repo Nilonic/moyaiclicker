@@ -1,5 +1,6 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { optimize } = require("webpack");
 
 module.exports = {
   mode: "production",
@@ -9,19 +10,34 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
+  optimization: {
+    chunkIds: 'total-size',
+    innerGraph: true,
+    mangleExports: 'size',
+    mergeDuplicateChunks: true,
+    minimize: true,
+    moduleIds: 'size',
+    removeEmptyChunks: true,
+  },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
         type: "javascript/auto",
-        use: "babel-loader",
+        use: {
+          loader: "babel-loader",
+          options: {},
+        },
       },
       {
         test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
-          "css-loader",
+          {
+            loader: "css-loader",
+            options: {},
+          },
         ],
       },
     ],

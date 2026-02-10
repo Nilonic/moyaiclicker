@@ -16,7 +16,8 @@
   "main": "Runner.js",
   "scripts": {
     "build": "webpack && copyfiles -u 0 index.html moyai.png favicon.ico vine-boom.mp3 curver.txt dist",
-    "dev": "webpack --mode development && copyfiles -u 0 dev.html moyai.png favicon.ico vine-boom.mp3 curver.txt dist"
+    "dev": "webpack --mode development && copyfiles -u 0 dev.html moyai.png favicon.ico vine-boom.mp3 curver.txt dist && cd dist && py -m http.server 5000",
+    "test": "webpack && copyfiles -u 0 dev.html moyai.png favicon.ico vine-boom.mp3 curver.txt dist && cd dist && py -m http.server 5000"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",

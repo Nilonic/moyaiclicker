@@ -11,8 +11,10 @@ import { GrantAchievement } from "./Modules/Achievements.module.js";
 import { CreateNotification } from "./Modules/Notifications.module.js";
 import {} from "./Modules/AchievementsPage.module.js";
 import { ACHIEVEMENTS } from "./Modules/AchievementList.module.js";
+import "./Modules/devDumper.module.js"
 import "./style.css";
 import "./style_dark.css";
+
 
 let disabled = false;
 let volume = 1;
